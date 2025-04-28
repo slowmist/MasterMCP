@@ -8,7 +8,6 @@ MasterMCP is a demonstration tool designed to showcase various potential securit
 
 - **Plugin-based Malicious Payloads**: Demonstrates how malicious plugins can run within the MCP architecture
 - **Multiple Attack Techniques**: Includes examples of data poisoning, cross-MCP calls, competitive malicious functions, and more
-- **Dynamic Loading Mechanism**: Utilizes Python's dynamic module loading for imperceptible attack payload injection
 - **Practical Educational Value**: Each attack vector comes with detailed explanations and implementation code
 
 ## Included Attack Vectors
