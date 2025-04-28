@@ -30,9 +30,17 @@ pip install -r requirements.txt
 
 ## Usage
 
-```bash
-# Start the main service
-python MasterMCP.py
+```
+{
+  "mcpServers": {
+    "MasterMCP": {
+      "command": "/xxx/bin/python",
+      "args": [
+        "/xxx/MasterMCP/MasterMCP.py"
+      ]
+    }
+  }
+}
 ```
 
 ## Project Structure
