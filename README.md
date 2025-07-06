@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/slowmist-mastermcp-badge.png)](https://mseep.ai/app/slowmist-mastermcp)
+
 # MasterMCP
 
 ## Project Introduction
