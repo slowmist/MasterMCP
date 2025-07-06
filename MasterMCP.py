@@ -114,7 +114,7 @@ def register_plugin(name: str, description: str, function: Callable, schema: Dic
     # Register tool
     mcp.add_tool(wrapper, name=name, description=description)
     
-    log.info(f"Plugin registered: {name}")
+    # Plugin registered: {name}
 
 def load_plugins(plugins_dir: str = None) -> None:
     """Scan directory and load all valid plugin files"""
@@ -151,7 +151,7 @@ def load_plugins(plugins_dir: str = None) -> None:
             module_path = os.path.join(plugins_dir, filename)
             module_name = filename[:-3]  # Remove .py extension
             
-            log.info(f"Attempting to load plugin: {module_name} (path: {module_path})")
+            # Attempting to load plugin: {module_name} (path: {module_path})
             
             # Dynamically load module
             spec = importlib.util.spec_from_file_location(module_name, module_path)
@@ -183,7 +183,7 @@ def load_plugins(plugins_dir: str = None) -> None:
             log.error(f"Error loading plugin {filename}: {str(e)}")
             errors_count += 1
     
-    log.info(f"Loaded {plugins_count} plugins, {errors_count} failed")
+    # Loaded {plugins_count} plugins, {errors_count} failed
 
 # Load all plugins
 load_plugins()
@@ -229,7 +229,7 @@ def register_resource_plugin(name: str, description: str, uri: str, mime_type: s
     # Add to server
     mcp.add_resource(resource)
     
-    log.info(f"Resource plugin registered: {name}")
+    # Resource plugin registered: {name}
 
 def register_resource_template_plugin(name: str, description: str, uri_template: str, mime_type: str, function: Callable) -> None:
     """Register a resource template plugin and create corresponding MCP resource template"""
@@ -245,7 +245,7 @@ def register_resource_template_plugin(name: str, description: str, uri_template:
         mime_type=mime_type
     )
     
-    log.info(f"Resource template plugin registered: {name}")
+    # Resource template plugin registered: {name}
 
 def load_resource_plugins(resources_plugins_dir: str = None) -> None:
     """Scan directory and load all valid resource plugin files"""
@@ -283,7 +283,7 @@ def load_resource_plugins(resources_plugins_dir: str = None) -> None:
             module_path = os.path.join(resources_plugins_dir, filename)
             module_name = filename[:-3]  # Remove .py extension
             
-            log.info(f"Attempting to load resource plugin: {module_name} (path: {module_path})")
+            # Attempting to load resource plugin: {module_name} (path: {module_path})
             
             # Dynamically load module
             spec = importlib.util.spec_from_file_location(module_name, module_path)
@@ -337,7 +337,7 @@ def load_resource_plugins(resources_plugins_dir: str = None) -> None:
             log.error(f"Error loading resource plugin {filename}: {str(e)}")
             errors_count += 1
     
-    log.info(f"Loaded {resources_count} regular resource plugins, {templates_count} resource template plugins, {errors_count} failed")
+    # Loaded {resources_count} regular resource plugins, {templates_count} resource template plugins, {errors_count} failed
 
 # Load all resource plugins
 load_resource_plugins()
@@ -362,7 +362,7 @@ def register_prompt_plugin(name: str, description: str, function: Callable) -> N
     prompt = Prompt.from_function(function, name=name, description=description)
     mcp.add_prompt(prompt)
     
-    log.info(f"Prompt plugin registered: {name}")
+    # Prompt plugin registered: {name}
 
 def load_prompts_plugins(prompts_plugins_dir: str = None) -> None:
     """Scan directory and load all valid prompt plugin files"""
@@ -399,7 +399,7 @@ def load_prompts_plugins(prompts_plugins_dir: str = None) -> None:
             module_path = os.path.join(prompts_plugins_dir, filename)
             module_name = filename[:-3]  # Remove .py extension
             
-            log.info(f"Attempting to load prompt plugin: {module_name} (path: {module_path})")
+            # Attempting to load prompt plugin: {module_name} (path: {module_path})
             
             # Dynamically load module
             spec = importlib.util.spec_from_file_location(module_name, module_path)
@@ -430,19 +430,19 @@ def load_prompts_plugins(prompts_plugins_dir: str = None) -> None:
             log.error(f"Error loading prompt plugin {filename}: {str(e)}")
             errors_count += 1
     
-    log.info(f"Loaded {prompts_count} prompt plugins, {errors_count} failed")
+    # Loaded {prompts_count} prompt plugins, {errors_count} failed
 
 # Load all prompt plugins
 load_prompts_plugins()
 
 if __name__ == "__main__":
-    log.info(f"Starting MCP service, registered {len(plugins) + len(resource_plugins) + len(resource_template_plugins) + len(prompts_plugins) + 3} tools, resources and prompt templates")
+    # Starting MCP service, registered {len(plugins) + len(resource_plugins) + len(resource_template_plugins) + len(prompts_plugins) + 3} tools, resources and prompt templates
     
     # Start FastAPI subprocess
     fastapi_process = Process(target=run_fastapi_server)
     fastapi_process.daemon = True  # Set as daemon process, automatically terminates when main process ends
     fastapi_process.start()
-    log.info("FastAPI service started in subprocess")
+    # FastAPI service started in subprocess
     
     # Start MCP server
     mcp.run()
